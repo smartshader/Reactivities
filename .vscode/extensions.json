@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "vscodevim.vim",
+        "ms-dotnettools.csharp",
+        "vscode-icons-team.vscode-icons",
+        "CoenraadS.bracket-pair-colorizer-2",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "jmrog.vscode-nuget-package-manager",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "dsznajder.es7-react-js-snippets"
+    ]
+}

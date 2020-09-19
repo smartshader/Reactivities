@@ -27,3 +27,14 @@ cd ..\API\
 dotnet.exe add reference ..\Application\
 cd ..\Persistence\
 dotnet.exe add reference ..\Domain\
+
+* Install projects dependencies
+dotnet add ./API package Microsoft.EntityFrameworkCore.Design
+dotnet add ./Persistence package Microsoft.EntityFrameworkCore.Core
+dotnet add ./Persistence package Microsoft.EntityFrameworkCore.SqlServer
+
+* Install dotnet ef tool
+dotnet tool install --global dotnet-ef
+
+* Create database
+dotnet-ef migrations add InitialCreate -p Persistence -s API

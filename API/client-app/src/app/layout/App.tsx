@@ -38,6 +38,7 @@ const App = () => {
           activities={activities}
           selectActivity={handleSelectActivity}
           selectedActivity={selectedActivity}
+          setSelectedActivity={setSelectedActivity}
           editMode={editMode}
           setEditMode={setEditMode}
         />

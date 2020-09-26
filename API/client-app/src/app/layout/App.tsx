@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
-import { Container, List } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { IActivity } from '../models/activity';
 import NavBar from '../../features/nav/NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
@@ -15,6 +15,11 @@ const App = () => {
     setSelectedActivity(activities.filter(activity => activity.id === id)[0]);
   };
   
+  const handleOpenCreateForm = () => {
+    setSelectedActivity(null);
+    setEditMode(true);
+  }
+  
   useEffect(() => {
     axios
       .get<IActivity[]>('http://localhost:5000/api/activities')
@@ -26,7 +31,7 @@ const App = () => {
   return (
     <Fragment>
       
-      <NavBar />
+      <NavBar openCreateForm={handleOpenCreateForm} />
       
       <Container style={{marginTop: '7em'}}>
         <ActivityDashboard

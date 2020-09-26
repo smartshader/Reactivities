@@ -30,9 +30,13 @@ const ActivityForm: React.FC<IProps> = ({setEditMode, activity: initialFormState
     setActivity({...activity, [name]: value});
   };
   
+  const handleSubmit = () => {
+    console.log(activity);
+  }
+  
   return (
     <Segment clearing>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Input
           onChange={handleInputChange}
           name='title'

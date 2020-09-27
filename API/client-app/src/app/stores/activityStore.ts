@@ -9,16 +9,20 @@ class ActivityStore {
   @observable editMode = false;
   @observable loadingInitial = false;
   
-  @action loadActivities = () => {
+  @action loadActivities = async () => {
     this.loadingInitial = true;
-    agent.Activities.list()
-      .then(activities => {
-        activities.forEach(activity => {
-          activity.date = activity.date.split('.')[0];
-          this.activities.push(activity);
-        });
-      }).finally(() => this.loadingInitial = false);
-  }
+    try {
+      const activities = await agent.Activities.list();
+      activities.forEach(activity => {
+        activity.date = activity.date.split('.')[0];
+        this.activities.push(activity);
+      });
+      this.loadingInitial = false;
+    } catch (error) {
+      console.log(error);
+      this.loadingInitial = false;
+    }
+  };
   
   @action selectActivity = (id: string) => {
     this.selectedActivity = this.activities.find(activity => activity.id === id);

@@ -5,6 +5,8 @@ import agent from '../api/agent';
 
 class ActivityStore {
   @observable activities: IActivity[] = [];
+  @observable selectedActivity: IActivity | undefined;
+  @observable editMode = false;
   @observable loadingInitial = false;
   
   @action loadActivities = () => {
@@ -16,6 +18,11 @@ class ActivityStore {
           this.activities.push(activity);
         });
       }).finally(() => this.loadingInitial = false);
+  }
+  
+  @action selectActivity = (id: string) => {
+    this.selectedActivity = this.activities.find(activity => activity.id === id);
+    this.editMode = false;
   }
 }
 

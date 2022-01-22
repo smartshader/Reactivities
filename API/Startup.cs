@@ -24,7 +24,7 @@ namespace API
         {
             services.AddDbContext<DataContext>(opt =>
             {
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                opt.UseSqlite(Configuration.GetConnectionString("SqlLiteConnection"));
             });
             services.AddControllers();
             services.AddCors(options =>
